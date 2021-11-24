@@ -1,5 +1,6 @@
 package com.example.demo.Controller;
 import com.example.components.Memory;
+import java.util.HashSet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping; 
@@ -24,5 +25,10 @@ public class Controller {
     public String getInfo(){
         
         return memory.getInfo();
+    }
+    @RequestMapping(value="/info", method=RequestMethod.POST)
+    public void value (String value){
+       
+        memory.setInfo(value);
     }
 }
