@@ -2,6 +2,7 @@ package com.example.demo.Controller;
 import com.example.components.Memory;
 import java.util.HashSet;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping; 
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -26,8 +27,9 @@ public class Controller {
         
         return memory.getInfo();
     }
-    @RequestMapping(value="/info", method=RequestMethod.POST)
-    public void value (String value){
+       
+    @RequestMapping(value="/info", method=RequestMethod.POST, consumes = "application/json")
+    public void value (@RequestBody String value){
        
         memory.setInfo(value);
     }
