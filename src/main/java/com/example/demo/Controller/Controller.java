@@ -1,7 +1,8 @@
 package com.example.demo.Controller;
 import com.example.components.Memory;
-import java.util.HashSet;
+import java.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping; 
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RestController
 public class Controller {
     
+    
+    
     @Autowired
     Memory memory;
     
@@ -22,15 +25,17 @@ public class Controller {
         return "Hello World!";
     }
     
-    @RequestMapping(value="/info", method=RequestMethod.GET)
-    public String getInfo(){
+    @RequestMapping(value="/info/{ID}", method=RequestMethod.GET)
+    public String getInfo(@PathVariable String ID){
         
-        return memory.getInfo();
+        //memory.mapA.get("ID");
+        return memory.getInfo(ID);
     }
        
-    @RequestMapping(value="/info", method=RequestMethod.POST, consumes = "application/json")
-    public void value (@RequestBody String value){
-       
-        memory.setInfo(value);
+    @RequestMapping(value="/info/{ID}", method=RequestMethod.POST, consumes = "application/json")
+    public void value (@RequestBody String value, @PathVariable String ID){
+        
+        //memory.mapA.put("ID", ID);       
+        memory.setInfo(value, ID);
     }
 }
