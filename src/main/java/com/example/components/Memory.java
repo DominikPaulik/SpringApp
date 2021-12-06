@@ -11,19 +11,16 @@ public class Memory {
     
     private String info;
     private String ID;
-    public Map mapA = new TreeMap();
+    public Map mapA = new HashMap();
     
     public String getInfo(String ID) {
         
-        info = mapA.get("str").toString();
-        this.ID = mapA.get("ID").toString();
-        return ID + this.ID + " | " + info;
+        return ID + " | " + mapA.get(ID).toString(); 
     } 
 
     public void setInfo(String info, String ID) {
 
-        this.info = mapA.put("str", info).toString();
-        this.ID = mapA.put("ID", ID).toString();
+        this.info = mapA.put(ID, info).toString();
         //this.info = info;
     }
 }
